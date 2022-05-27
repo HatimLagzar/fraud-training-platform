@@ -26,7 +26,6 @@ class User extends Authenticatable
     public const NORMAL_TYPE = 2;
 
     protected $table = self::TABLE;
-    public $timestamps = false;
 
     protected $fillable = [
         self::NAME_COLUMN,
