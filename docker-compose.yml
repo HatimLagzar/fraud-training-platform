@@ -2,7 +2,6 @@ version: '3.8'
 
 services:
   fraud_training_web:
-    restart: always
     container_name: "fraud_training_web"
     build: .
     ports:
@@ -16,7 +15,6 @@ services:
   
   fraud_training_db:
     image: mysql
-    restart: always
     hostname: 'mysql'
     container_name: fraud_training_db
     ports:
@@ -31,7 +29,6 @@ services:
   
   phpmyadmin:
     image: phpmyadmin
-    restart: always
     hostname: 'phpmyadmin'
     container_name: 'fraud_training_phpmyadmin'
     ports:
