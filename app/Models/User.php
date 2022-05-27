@@ -46,4 +46,14 @@ class User extends Authenticatable
     protected $casts = [
         self::EMAIL_VERIFIED_AT_COLUMN => 'datetime',
     ];
+
+    public function getType(): int
+    {
+        return $this->getAttribute(self::TYPE_COLUMN);
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->getType() === self::ADMIN_TYPE;
+    }
 }
