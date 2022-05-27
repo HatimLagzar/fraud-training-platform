@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  fraud_training_web:
+    restart: always
+    container_name: "fraud_training_web"
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - type: bind
+        source: "./"
+        target: "/var/www"
+    networks:
+      - fraud_training_network
+  
+  fraud_training_db:
+    image: mysql
+    restart: always
+    hostname: 'mysql'
+    container_name: fraud_training_db
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: "fraud_training"
+      MYSQL_ROOT_PASSWORD: "@root@"
+    volumes:
+      - fraud_training_db_data:/var/lib/mysql:rw
+    networks:
+      - fraud_training_network
+  
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    hostname: 'phpmyadmin'
+    container_name: 'fraud_training_phpmyadmin'
+    ports:
+      - "8080:80"
+    environment:
+      - PMA_ARBITRARY=1
+    networks:
+      - fraud_training_network
+
+networks:
+  fraud_training_network:
+    driver: bridge
+
+volumes:
+  fraud_training_db_data: { }
