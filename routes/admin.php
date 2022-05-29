@@ -5,8 +5,10 @@ use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\Question\CreateQuestionController;
 use App\Http\Controllers\Admin\Question\DeleteQuestionController;
+use App\Http\Controllers\Admin\Question\EditQuestionController;
 use App\Http\Controllers\Admin\Question\ListQuestionsController;
 use App\Http\Controllers\Admin\Question\StoreQuestionController;
+use App\Http\Controllers\Admin\Question\UpdateQuestionController;
 use App\Http\Middleware\IsAdminMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +36,8 @@ Route::middleware(IsAdminMiddleware::class)->group(function () {
         Route::get('/', ListQuestionsController::class)->name('index');
         Route::get('create', CreateQuestionController::class)->name('create');
         Route::post('/', StoreQuestionController::class)->name('store');
+        Route::get('{question}/edit', EditQuestionController::class)->name('edit');
+        Route::post('{question}', UpdateQuestionController::class)->name('update');
         Route::delete('{question}', DeleteQuestionController::class)->name('delete');
     });
 });

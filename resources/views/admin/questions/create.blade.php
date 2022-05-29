@@ -20,7 +20,7 @@
                 </button>
             </div>
 
-            <button class="btn btn-primary"><i class="fa fa-plus"></i> Create</button>
+            <button class="btn btn-primary"><i class="fa fa-paper-plane"></i> Create</button>
             <button class="btn btn-secondary"><i class="fa fa-eraser"></i> Clear</button>
         </form>
     </section>

@@ -33,4 +33,9 @@ class ReplyService
     {
         return $this->replyRepository->create($attributes);
     }
+
+    public function deleteAllByQuestion(Question $question): bool
+    {
+        return $this->replyRepository->deleteAllByQuestion($question->getId());
+    }
 }

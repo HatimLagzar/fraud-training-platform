@@ -34,7 +34,7 @@
                     </ul>
                 </td>
                 <td>
-                    <a class="btn btn-sm btn-secondary border-0 "><i class="fa fa-pencil"></i> Edit</a>
+                    <a class="btn btn-sm btn-secondary border-0" href="{{ route('admin.questions.edit', ['question' => $question]) }}"><i class="fa fa-pencil"></i> Edit</a>
                     <form action="{{ route('admin.questions.delete', ['question' => $question]) }}" method="POST"
                           class="d-inline-block">
                         @csrf

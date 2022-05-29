@@ -31,6 +31,13 @@ class ReplyRepository extends AbstractEloquentRepository
                     ->create($attributes);
     }
 
+    public function deleteAllByQuestion(int $questionId): bool
+    {
+        return $this->getQueryBuilder()
+                    ->where(Reply::QUESTION_ID_COLUMN, $questionId)
+                    ->delete() > 0;
+    }
+
     protected function getModelClass(): string
     {
         return Reply::class;

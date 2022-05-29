@@ -60,7 +60,7 @@ class QuestionService {
     delete(e) {
         e.preventDefault()
 
-        e.currentTarget.parentElement.parentElement.parentElement.remove()
+        e.currentTarget.parentElement.remove()
     }
 
     countReplies() {

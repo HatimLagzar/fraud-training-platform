@@ -52,4 +52,9 @@ class QuestionService
     {
         return $this->questionRepository->destroy($question->getId());
     }
+
+    public function update(Question $question, array $attributes): bool
+    {
+        return $this->questionRepository->update($question->getId(), $attributes);
+    }
 }
