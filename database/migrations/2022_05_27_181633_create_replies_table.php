@@ -17,7 +17,7 @@ class CreateRepliesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('question_id');
             $table->text('content');
-            $table->boolean('is_correct');
+            $table->boolean('correct_reply_index');
             $table->timestamps();
 
             $table->foreign('question_id')
