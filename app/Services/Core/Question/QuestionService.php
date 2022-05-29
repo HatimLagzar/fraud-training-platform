@@ -47,4 +47,9 @@ class QuestionService
 
         return $question;
     }
+
+    public function destroy(Question $question): bool
+    {
+        return $this->questionRepository->destroy($question->getId());
+    }
 }

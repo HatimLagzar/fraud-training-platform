@@ -17,12 +17,14 @@ class CreateRepliesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('question_id');
             $table->text('content');
-            $table->boolean('correct_reply_index');
+            $table->boolean('is_correct');
             $table->timestamps();
 
             $table->foreign('question_id')
                   ->on('questions')
-                  ->references('id');
+                  ->references('id')
+                  ->cascadeOnUpdate()
+                  ->cascadeOnDelete();
         });
     }
 
