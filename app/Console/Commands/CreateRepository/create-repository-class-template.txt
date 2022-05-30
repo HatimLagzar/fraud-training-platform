@@ -7,7 +7,7 @@ use App\Models\__MODEL_NAME__;
 
 class __NAME_OF_CLASS__ extends AbstractEloquentRepository
 {
-    public function findById(string $id): ?__NAME_OF_CLASS__
+    public function findById(string $id): ?__MODEL_NAME__
     {
     }
 
