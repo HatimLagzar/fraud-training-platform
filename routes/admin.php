@@ -3,6 +3,12 @@
 use App\Http\Controllers\Admin\AuthenticateController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\Post\CreatePostController;
+use App\Http\Controllers\Admin\Post\DeletePostController;
+use App\Http\Controllers\Admin\Post\EditPostController;
+use App\Http\Controllers\Admin\Post\ListPostsController;
+use App\Http\Controllers\Admin\Post\StorePostController;
+use App\Http\Controllers\Admin\Post\UpdatePostController;
 use App\Http\Controllers\Admin\Question\CreateQuestionController;
 use App\Http\Controllers\Admin\Question\DeleteQuestionController;
 use App\Http\Controllers\Admin\Question\EditQuestionController;
@@ -39,5 +45,14 @@ Route::middleware(IsAdminMiddleware::class)->group(function () {
         Route::get('{question}/edit', EditQuestionController::class)->name('edit');
         Route::post('{question}', UpdateQuestionController::class)->name('update');
         Route::delete('{question}', DeleteQuestionController::class)->name('delete');
+    });
+
+    Route::prefix('posts')->name('posts.')->group(function () {
+        Route::get('/', ListPostsController::class)->name('index');
+        Route::get('create', CreatePostController::class)->name('create');
+        Route::post('/', StorePostController::class)->name('store');
+        Route::get('{post}/edit', EditPostController::class)->name('edit');
+        Route::post('{post}', UpdatePostController::class)->name('update');
+        Route::delete('{post}', DeletePostController::class)->name('delete');
     });
 });

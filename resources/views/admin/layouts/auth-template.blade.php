@@ -30,7 +30,7 @@
                     <a class="nav-link" href="{{ route('admin.questions.index') }}">Questions</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Articles</a>
+                    <a class="nav-link" href="{{ route('admin.posts.index') }}">Articles</a>
                 </li>
             </ul>
         </div>
@@ -52,6 +52,8 @@
 
     @yield('content')
 </div>
+
+@yield('scripts')
 
 <script src="{{ asset('js/app.js') }}"></script>
 </body>
