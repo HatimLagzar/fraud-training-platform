@@ -1,9 +1,9 @@
 <?php
 
+use App\Http\Controllers\Client\Auth\Register\RegisterController;
+use App\Http\Controllers\Client\Auth\Register\ShowRegisterPageController;
 use App\Http\Controllers\Client\Auth\VerifyController;
 use App\Http\Controllers\Client\HomeController;
-use App\Http\Controllers\Client\Register\RegisterController;
-use App\Http\Controllers\Client\Register\ShowRegisterPageController;
 use Illuminate\Support\Facades\Route;
 
 /*
