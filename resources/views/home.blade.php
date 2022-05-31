@@ -24,7 +24,7 @@
                     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Login</a>
+                                <a class="nav-link" href="{{ route('login-page') }}">Login</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('register-page') }}">Register</a>

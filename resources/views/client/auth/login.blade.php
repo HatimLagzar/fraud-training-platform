@@ -3,7 +3,7 @@
 @endphp
 @extends('layouts.noauth-template')
 @section('title')
-    Register
+    Login
 @endsection
 @section('content')
     <div id="register-page">
@@ -37,17 +37,16 @@
                     </div>
                 </div>
             @endif
-            <h1 class="section-title">Please Register</h1>
-            <form action="{{ route('register') }}" method="POST">
-                @csrf
-                <div class="input-group mb-2">
-                    <input type="text" placeholder="Full Name" class="form-control @error('name') is-invalid @enderror" name="name" required>
-                    <div class="invalid-feedback">
-                        @error('name')
-                        {{ $message }}
-                        @enderror
+            @if (session('success'))
+                <div class="container">
+                    <div class="alert alert-success mb-5 w-50 mx-auto" role="alert">
+                        {{ session('success') }}
                     </div>
                 </div>
+            @endif
+            <h1 class="section-title">Please Login</h1>
+            <form action="{{ route('login') }}" method="POST">
+                @csrf
                 <div class="input-group mb-2">
                     <input type="email" placeholder="Email Address" class="form-control @error('email') is-invalid @enderror" name="email" required>
                     <div class="invalid-feedback">
@@ -64,30 +63,8 @@
                         @enderror
                     </div>
                 </div>
-                <div class="input-group mb-2">
-                    <input type="password" placeholder="Password Confirmation" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" required>
-                    <div class="invalid-feedback">
-                        @error('password_confirmation')
-                        {{ $message }}
-                        @enderror
-                    </div>
-                </div>
-                <div class="input-group mb-3">
-                    <select name="country" class="form-control @error('country') is-invalid @enderror" required>
-                        <option>Select Your Country</option>
-                        @foreach($countries as $country)
-                            <option value="{{ $country->getId() }}">{{ $country->getNiceName() }}</option>
-                        @endforeach
-                    </select>
-
-                    <div class="invalid-feedback">
-                        @error('country')
-                        {{ $message }}
-                        @enderror
-                    </div>
-                </div>
                 <div class="input-group">
-                    <button class="btn btn-primary">Register</button>
+                    <button class="btn btn-primary">Login</button>
                 </div>
             </form>
         </section>

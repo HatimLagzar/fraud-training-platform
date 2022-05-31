@@ -10,6 +10,6 @@
 
 .alert-danger {
   color: white;
-  background-color: $primary;
+  background-color: darken($primary, 10%);
   border: none;
 }

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Client\Auth\Login\LoginController;
+use App\Http\Controllers\Client\Auth\Login\ShowLoginPageController;
 use App\Http\Controllers\Client\Auth\Register\RegisterController;
 use App\Http\Controllers\Client\Auth\Register\ShowRegisterPageController;
 use App\Http\Controllers\Client\Auth\VerifyController;
@@ -18,7 +20,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', HomeController::class)->name('home');
-Route::get('login', ShowRegisterPageController::class)->name('login-page');
+Route::get('login', ShowLoginPageController::class)->name('login-page');
+Route::post('login', LoginController::class)->name('login');
+
 Route::get('register', ShowRegisterPageController::class)->name('register-page');
 Route::post('register', RegisterController::class)->name('register');
 
