@@ -1,3 +1,4 @@
+require('bootstrap/dist/js/bootstrap.min')
 // window._ = require('lodash');
 
 /**
