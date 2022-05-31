@@ -44,7 +44,7 @@
             <div class="row">
                 <div class="col-lg-1"></div>
                 <div class="col">
-                    <img src="{{ asset('images/target.png') }}" alt="" width="256">
+                    <img src="{{ asset('images/target.png') }}" alt="" width="256" height="256">
                 </div>
                 <div class="col-lg-7 col-12 section-content">
                     <p>Internet scams that target victims through online services account for millions of dollars worth of fraudulent activity every year. And the figures continue to increase as internet usage expands and cyber-criminal techniques become more sophisticated. Here are some facts:</p>
@@ -66,12 +66,13 @@
             <div class="row">
                 <div class="col-lg-1"></div>
                 <div class="col">
-                    <img src="{{ asset('images/shield.png') }}" alt="" width="256">
+                    <img src="{{ asset('images/shield.png') }}" alt="" width="256" height="256">
                 </div>
                 <div class="col-lg-7 col-12 section-content">
                     <p>Protect yourself and your money from scammers on the internet by using our training to level up your knowledge of internet security and get our daily notifications about trending scams types and ways to protect against them.</p>
+
+                    <p class="mb-0">Our training includes the following:</p>
                     <ul>
-                        Our training includes the following:
                         <li>Quick training compress to take you less than 5 minutes.</li>
                         <li>Daily notifications about trending scams and types of frauds.</li>
                         <li>Get certified by our company.</li>

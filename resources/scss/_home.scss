@@ -26,10 +26,11 @@
       margin-bottom: 50px;
       text-align: center;
       line-height: 1.85rem;
+      max-width: 40%;
     }
 
     a.btn-primary {
-      background: #E24737;
+      background-color: darken($primary, 10%);
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
       border-radius: 3px;
       padding: .75rem 60px;
@@ -103,7 +104,7 @@ section {
   }
 
   button {
-    background: #E24737;
+    background: $primary;
     border-radius: 3px;
     padding: .5rem 50px;
     text-align: center;
@@ -130,15 +131,19 @@ footer {
 }
 
 
-@media screen and (min-width: 425px) {
+@media screen and (max-width: 425px) {
   #header {
     padding: 30px 0;
-    min-height: 0;
+    min-height: auto;
 
     #nav {
       .navbar-toggler {
         color: white;
         border: none;
+
+        &:focus {
+          box-shadow: none;
+        }
 
         i {
           font-size: 30px;
@@ -152,11 +157,11 @@ footer {
     }
 
     #hero {
-      height: 70vh;
+      height: auto;
 
       h1 {
-        font-size: 45px;
-        margin-bottom: 40px;
+        font-size: 40px;
+        margin: 40px 0;
         line-height: 45px;
       }
 
@@ -176,6 +181,7 @@ footer {
       display: block;
       margin: 0 auto;
       width: 200px;
+      height: 200px;
     }
 
     .section-content {
