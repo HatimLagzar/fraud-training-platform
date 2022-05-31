@@ -11,6 +11,9 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public const ADMIN_TYPE = 1;
+    public const NORMAL_TYPE = 2;
+
     public const TABLE = 'users';
     public const ID_COLUMN = 'id';
     public const NAME_COLUMN = 'name';
@@ -20,10 +23,9 @@ class User extends Authenticatable
     public const TYPE_COLUMN = 'type';
     public const REMEMBER_TOKEN_COLUMN = 'remember_token';
     public const CREATED_AT_COLUMN = 'created_at';
+    public const VERIFICATION_TOKEN_COLUMN = 'verification_token';
     public const UPDATED_AT_COLUMN = 'updated_at';
-
-    public const ADMIN_TYPE = 1;
-    public const NORMAL_TYPE = 2;
+    public const COUNTRY_ID_COLUMN = 'country_id';
 
     protected $table = self::TABLE;
 
@@ -36,16 +38,29 @@ class User extends Authenticatable
         self::REMEMBER_TOKEN_COLUMN,
         self::CREATED_AT_COLUMN,
         self::UPDATED_AT_COLUMN,
+        self::VERIFICATION_TOKEN_COLUMN,
+        self::COUNTRY_ID_COLUMN,
     ];
 
     protected $hidden = [
         self::PASSWORD_COLUMN,
         self::REMEMBER_TOKEN_COLUMN,
+        self::VERIFICATION_TOKEN_COLUMN,
     ];
 
     protected $casts = [
         self::EMAIL_VERIFIED_AT_COLUMN => 'datetime',
     ];
+
+    public function getId(): int
+    {
+        return $this->getAttribute(self::ID_COLUMN);
+    }
+
+    public function getVerificationToken(): string
+    {
+        return $this->getAttribute(self::VERIFICATION_TOKEN_COLUMN);
+    }
 
     public function getType(): int
     {

@@ -1,0 +1,20 @@
+#nav {
+  background-color: $primary !important;
+  margin: 0;
+  padding: 0;
+
+  a.navbar-brand {
+    font-family: 'Teko', sans-serif;
+    font-size: 40px;
+  }
+
+  a {
+    color: white !important;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+  }
+
+  a.nav-link {
+    padding: .5rem .75rem;
+  }
+}

@@ -1,0 +1,15 @@
+.alert {
+  border-radius: 0;
+}
+
+.alert-success {
+  color: white;
+  background-color: #0f5132;
+  border: none;
+}
+
+.alert-danger {
+  color: white;
+  background-color: $primary;
+  border: none;
+}

@@ -14,19 +14,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
-<div class="container">
-    @if (session('success'))
-        <div class="alert alert-success my-0 w-100" role="alert">
-            {{ session('success') }}
-        </div>
-    @endif
 
-    @if (session('error'))
-        <div class="alert alert-danger my-0 w-100" role="alert">
-            {{ session('error') }}
-        </div>
-    @endif
-</div>
 @yield('content')
 
 <script src="{{ asset('js/app.js') }}"></script>

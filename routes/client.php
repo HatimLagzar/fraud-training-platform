@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\Client\Auth\VerifyController;
 use App\Http\Controllers\Client\HomeController;
+use App\Http\Controllers\Client\Register\RegisterController;
+use App\Http\Controllers\Client\Register\ShowRegisterPageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,4 +17,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', HomeController::class);
+Route::get('/', HomeController::class)->name('home');
+Route::get('login', ShowRegisterPageController::class)->name('login-page');
+Route::get('register', ShowRegisterPageController::class)->name('register-page');
+Route::post('register', RegisterController::class)->name('register');
+
+Route::get('email/verify/{id}/{hash}', VerifyController::class)
+     ->name('verification.verify');

@@ -3,3 +3,8 @@ body {
   font-size: 16px;
   color: black;
 }
+
+::placeholder {
+  color: black !important;
+  opacity: 1 !important;
+}
