@@ -25,6 +25,10 @@ class UpdateQuestionController extends Controller
             $this->updateQuestionService->update(
                 $question,
                 $request->get('content'),
+                $request->get('content_fr'),
+                $request->get('content_es'),
+                $request->get('content_it'),
+                $request->get('content_de'),
                 $request->get('replies'),
                 $request->get('correct_reply_index')
             );

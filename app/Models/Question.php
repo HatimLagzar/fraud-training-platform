@@ -13,10 +13,18 @@ class Question extends Model
     public const TABLE = 'questions';
     public const ID_COLUMN = 'id';
     public const CONTENT_COLUMN = 'content';
+    public const CONTENT_FR_COLUMN = 'content_fr';
+    public const CONTENT_ES_COLUMN = 'content_es';
+    public const CONTENT_IT_COLUMN = 'content_it';
+    public const CONTENT_DE_COLUMN = 'content_de';
 
     protected $table = self::TABLE;
     protected $fillable = [
-        self::CONTENT_COLUMN
+        self::CONTENT_COLUMN,
+        self::CONTENT_FR_COLUMN,
+        self::CONTENT_ES_COLUMN,
+        self::CONTENT_IT_COLUMN,
+        self::CONTENT_DE_COLUMN,
     ];
 
     private ?Collection $replies = null;
@@ -29,6 +37,26 @@ class Question extends Model
     public function getContent(): string
     {
         return $this->getAttribute(self::CONTENT_COLUMN);
+    }
+
+    public function getContentFR(): string
+    {
+        return $this->getAttribute(self::CONTENT_FR_COLUMN);
+    }
+
+    public function getContentES(): string
+    {
+        return $this->getAttribute(self::CONTENT_ES_COLUMN);
+    }
+
+    public function getContentIT(): string
+    {
+        return $this->getAttribute(self::CONTENT_IT_COLUMN);
+    }
+
+    public function getContentDE(): string
+    {
+        return $this->getAttribute(self::CONTENT_DE_COLUMN);
     }
 
     /**

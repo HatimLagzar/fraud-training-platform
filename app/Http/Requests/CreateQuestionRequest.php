@@ -9,8 +9,8 @@ class CreateQuestionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'content'    => ['required', 'string'],
-            'replies.*'  => ['required', 'string'],
+            'content'             => ['required', 'string'],
+            'replies.*.*'         => ['required', 'string'],
             'correct_reply_index' => ['required', 'numeric', 'min:0']
         ];
     }

@@ -10,7 +10,7 @@ class UpdateQuestionRequest extends FormRequest
     {
         return [
             'content'             => ['required', 'string'],
-            'replies.*'           => ['required', 'string'],
+            'replies.*.*'         => ['required', 'string'],
             'correct_reply_index' => ['required', 'numeric', 'min:0']
         ];
     }

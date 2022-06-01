@@ -13,6 +13,30 @@
                           required></textarea>
             </div>
 
+            <div class="form-group mb-3">
+                <label for="contentInput" class="form-label">Question FR</label>
+                <textarea id="contentInput" name="content_fr" class="form-control" placeholder="Place your question here"
+                          required></textarea>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="contentInput" class="form-label">Question ES</label>
+                <textarea id="contentInput" name="content_es" class="form-control" placeholder="Place your question here"
+                          required></textarea>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="contentInput" class="form-label">Question IT</label>
+                <textarea id="contentInput" name="content_it" class="form-control" placeholder="Place your question here"
+                          required></textarea>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="contentInput" class="form-label">Question DE</label>
+                <textarea id="contentInput" name="content_de" class="form-control" placeholder="Place your question here"
+                          required></textarea>
+            </div>
+
             <div id="replies" class="px-4">
                 <h4>Replies List</h4>
                 <button type="button" role="button" id="add-new-reply" class="btn w-100 btn-primary btn-sm mb-2">

@@ -23,6 +23,10 @@ class StoreQuestionController extends Controller
         try {
             $this->createQuestionService->create(
                 $request->get('content'),
+                $request->get('content_fr'),
+                $request->get('content_es'),
+                $request->get('content_it'),
+                $request->get('content_de'),
                 $request->get('replies'),
                 $request->get('correct_reply_index')
             );

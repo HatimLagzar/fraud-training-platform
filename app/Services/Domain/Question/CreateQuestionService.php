@@ -18,16 +18,31 @@ class CreateQuestionService
         $this->replyService    = $replyService;
     }
 
-    public function create(string $content, array $replies, int $correctReply): bool
-    {
+    public function create(
+        string $content,
+        string $contentFR,
+        string $contentES,
+        string $contentIT,
+        string $contentDE,
+        array $replies,
+        int $correctReply
+    ): bool {
         $question = $this->questionService->create([
-            Question::CONTENT_COLUMN => $content
+            Question::CONTENT_COLUMN    => $content,
+            Question::CONTENT_FR_COLUMN => $contentFR,
+            Question::CONTENT_ES_COLUMN => $contentES,
+            Question::CONTENT_IT_COLUMN => $contentIT,
+            Question::CONTENT_DE_COLUMN => $contentDE,
         ]);
 
         foreach ($replies as $key => $reply) {
             $this->replyService->create([
                 Reply::QUESTION_ID_COLUMN => $question->getId(),
-                Reply::CONTENT_COLUMN     => $reply,
+                Reply::CONTENT_COLUMN     => $reply['en'],
+                Reply::CONTENT_FR_COLUMN  => $reply['fr'],
+                Reply::CONTENT_ES_COLUMN  => $reply['es'],
+                Reply::CONTENT_IT_COLUMN  => $reply['it'],
+                Reply::CONTENT_DE_COLUMN  => $reply['de'],
                 Reply::IS_CORRECT_COLUMN  => $key === $correctReply,
             ]);
         }
