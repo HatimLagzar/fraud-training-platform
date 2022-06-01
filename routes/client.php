@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Client\Auth\Login\LoginController;
 use App\Http\Controllers\Client\Auth\Login\ShowLoginPageController;
+use App\Http\Controllers\Client\Auth\LogoutController;
 use App\Http\Controllers\Client\Auth\Register\RegisterController;
 use App\Http\Controllers\Client\Auth\Register\ShowRegisterPageController;
 use App\Http\Controllers\Client\Auth\VerifyController;
@@ -28,9 +29,18 @@ Route::prefix('{locale?}')
          Route::get('login', ShowLoginPageController::class)->name('login-page');
          Route::post('login', LoginController::class)->name('login');
 
+         Route::post('logout', LogoutController::class)->name('logout')->middleware('auth');
+
          Route::get('register', ShowRegisterPageController::class)->name('register-page');
          Route::post('register', RegisterController::class)->name('register');
 
          Route::get('email/verify/{id}/{hash}', VerifyController::class)
               ->name('verification.verify');
+
+         Route::prefix('dashboard')
+              ->middleware('auth')
+              ->name('dashboard.')
+              ->group(function () {
+                  Route::get('/', \App\Http\Controllers\Client\Dashboard\HomeController::class)->name('home');
+              });
      });

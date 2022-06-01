@@ -57,6 +57,11 @@ class User extends Authenticatable
         return $this->getAttribute(self::ID_COLUMN);
     }
 
+    public function getName(): string
+    {
+        return $this->getAttribute(self::NAME_COLUMN);
+    }
+
     public function getVerificationToken(): string
     {
         return $this->getAttribute(self::VERIFICATION_TOKEN_COLUMN);

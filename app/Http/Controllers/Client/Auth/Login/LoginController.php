@@ -33,7 +33,7 @@ class LoginController extends Controller
             }
 
             return redirect()
-                ->route('home')
+                ->route('dashboard.home')
                 ->with('success', 'You did login successfully.');
         } catch (Throwable $e) {
             Log::error('failed to login', [
@@ -42,7 +42,7 @@ class LoginController extends Controller
             ]);
 
             return redirect()
-                ->route('register-page')
+                ->back()
                 ->with('error', 'Error occurred, please retry later!');
         }
     }
