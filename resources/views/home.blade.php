@@ -38,14 +38,11 @@
             </nav>
 
             <div id="hero">
-                <h1>
-                    Protect the money on<br>
-                    your credit card FROM FRAUD NOW
-                </h1>
+                <h1>{!! __('home.header.h1') !!}</h1>
 
-                <p>Protect yourself and your money from scammers on the internet by using our training to level up your knowledge of internet security and get our daily notifications about trending scams types and ways to protect against them.</p>
+                <p>{{ __('home.header.description') }}</p>
 
-                <a href="#" class="btn btn-primary">Train Now</a>
+                <a href="#" class="btn btn-primary">{{ __('home.header.buttonText') }}</a>
             </div>
         </header>
 

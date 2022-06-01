@@ -6,6 +6,8 @@ use App\Http\Controllers\Client\Auth\Register\RegisterController;
 use App\Http\Controllers\Client\Auth\Register\ShowRegisterPageController;
 use App\Http\Controllers\Client\Auth\VerifyController;
 use App\Http\Controllers\Client\HomeController;
+use App\Http\Middleware\SetDefaultLocaleForUrlsMiddleware;
+use App\Http\Middleware\SetupLocaleMiddleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,12 +21,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', HomeController::class)->name('home');
-Route::get('login', ShowLoginPageController::class)->name('login-page');
-Route::post('login', LoginController::class)->name('login');
+Route::prefix('{locale}')
+     ->middleware([SetupLocaleMiddleware::class, SetDefaultLocaleForUrlsMiddleware::class])
+     ->group(function () {
+         Route::get('/', HomeController::class)->name('home');
+         Route::get('login', ShowLoginPageController::class)->name('login-page');
+         Route::post('login', LoginController::class)->name('login');
 
-Route::get('register', ShowRegisterPageController::class)->name('register-page');
-Route::post('register', RegisterController::class)->name('register');
+         Route::get('register', ShowRegisterPageController::class)->name('register-page');
+         Route::post('register', RegisterController::class)->name('register');
 
-Route::get('email/verify/{id}/{hash}', VerifyController::class)
-     ->name('verification.verify');
+         Route::get('email/verify/{id}/{hash}', VerifyController::class)
+              ->name('verification.verify');
+     });
