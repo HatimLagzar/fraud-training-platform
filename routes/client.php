@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('{locale}')
+Route::prefix('{locale?}')
      ->middleware([SetupLocaleMiddleware::class, SetDefaultLocaleForUrlsMiddleware::class])
      ->group(function () {
          Route::get('/', HomeController::class)->name('home');
