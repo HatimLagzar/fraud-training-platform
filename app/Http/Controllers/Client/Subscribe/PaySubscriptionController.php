@@ -33,15 +33,10 @@ class PaySubscriptionController extends Controller
                 ->route('dashboard.home')
                 ->with('success', 'You have subscribed successfully.');
         } catch (IncompletePayment $e) {
-            Log::error('failed to subscribe due to incomplete payment', [
-                'error_message' => $e->getMessage(),
-            ]);
-
-            mail('lhatimdev@gmail.com', 'Failed Subscription Fraud Training', $e->getMessage());
-
-            return redirect()
-                ->back()
-                ->with('error', 'Failed to subscribe due to incomplete payment.');
+            return redirect()->route(
+                'cashier.payment',
+                [$e->payment->id, 'redirect' => route('home')]
+            );
         } catch (Throwable $e) {
             Log::error('failed to subscribe', [
                 'error_message' => $e->getMessage(),
