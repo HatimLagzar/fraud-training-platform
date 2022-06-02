@@ -14,7 +14,7 @@
 
       @if($questions->count() > 0)
         <p class="text-danger">You are missing some important information, please take the quick training by clicking the button below:</p>
-        <a class="btn btn-primary" href="{{ route('dashboard.quiz') }}">Train Now</a>
+        <a class="btn btn-primary" href="{{ route('dashboard.quiz.ask') }}">Train Now</a>
       @else
         <p class="text-success">Congrats! You took all the quick trainings.</p>
       @endif

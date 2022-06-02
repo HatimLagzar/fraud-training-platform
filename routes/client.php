@@ -45,7 +45,9 @@ Route::prefix('{locale?}')
               ->group(function () {
                   Route::get('/', \App\Http\Controllers\Client\Dashboard\HomeController::class)->name('home');
 
-                  Route::get('quiz', AskQuizController::class)->name('quiz');
-                  Route::post('quiz/{question}', ReplyQuizController::class)->name('quiz.reply');
+                  Route::prefix('quiz')->name('quiz.')->group(function () {
+                      Route::get('quiz', AskQuizController::class)->name('ask');
+                      Route::post('quiz/{question}', ReplyQuizController::class)->name('reply');
+                  });
               });
      });

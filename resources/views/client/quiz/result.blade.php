@@ -35,7 +35,7 @@
         @endforeach
 
         <div class="input-group mt-3">
-          <a class="btn btn-primary m-0 fs-6 px-4" href="{{ route('dashboard.quiz') }}">
+          <a class="btn btn-primary m-0 fs-6 px-4" href="{{ route('dashboard.quiz.ask') }}">
             Next Question<i class="fa fa-arrow-right ms-2"></i>
           </a>
         </div>
