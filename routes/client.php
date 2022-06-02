@@ -11,6 +11,9 @@ use App\Http\Controllers\Client\Post\ListPostsController;
 use App\Http\Controllers\Client\Post\ShowPostController;
 use App\Http\Controllers\Client\Quiz\AskQuizController;
 use App\Http\Controllers\Client\Quiz\ReplyQuizController;
+use App\Http\Controllers\Client\Subscribe\PaySubscriptionController;
+use App\Http\Controllers\Client\Subscribe\ShowSubscriptionPageController;
+use App\Http\Middleware\IsSubscribedMiddleware;
 use App\Http\Middleware\SetDefaultLocaleForUrlsMiddleware;
 use App\Http\Middleware\SetupLocaleMiddleware;
 use Illuminate\Support\Facades\Route;
@@ -45,16 +48,23 @@ Route::prefix('{locale?}')
               ->middleware('auth')
               ->name('dashboard.')
               ->group(function () {
-                  Route::get('/', \App\Http\Controllers\Client\Dashboard\HomeController::class)->name('home');
-
-                  Route::prefix('quiz')->name('quiz.')->group(function () {
-                      Route::get('quiz', AskQuizController::class)->name('ask');
-                      Route::post('quiz/{question}', ReplyQuizController::class)->name('reply');
+                  Route::prefix('subscribe')->name('subscribe.')->group(function () {
+                      Route::get('/', ShowSubscriptionPageController::class)->name('show');
+                      Route::post('/', PaySubscriptionController::class)->name('pay');
                   });
 
-                  Route::prefix('posts')->name('posts.')->group(function () {
-                      Route::get('/', ListPostsController::class)->name('index');
-                      Route::get('{id}', ShowPostController::class)->name('show');
+                  Route::middleware(IsSubscribedMiddleware::class)->group(function () {
+                      Route::get('/', \App\Http\Controllers\Client\Dashboard\HomeController::class)->name('home');
+
+                      Route::prefix('quiz')->name('quiz.')->group(function () {
+                          Route::get('quiz', AskQuizController::class)->name('ask');
+                          Route::post('quiz/{question}', ReplyQuizController::class)->name('reply');
+                      });
+
+                      Route::prefix('posts')->name('posts.')->group(function () {
+                          Route::get('/', ListPostsController::class)->name('index');
+                          Route::get('{id}', ShowPostController::class)->name('show');
+                      });
                   });
               });
      });
