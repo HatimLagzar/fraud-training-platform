@@ -35,7 +35,7 @@ class PaySubscriptionController extends Controller
         } catch (IncompletePayment $e) {
             return redirect()->route(
                 'cashier.payment',
-                [$e->payment->id, 'redirect' => route('home')]
+                [$e->payment->id, 'redirect' => route('dashboard.home')]
             );
         } catch (Throwable $e) {
             Log::error('failed to subscribe', [
