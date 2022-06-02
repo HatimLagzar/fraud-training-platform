@@ -7,6 +7,8 @@ use App\Http\Controllers\Client\Auth\Register\RegisterController;
 use App\Http\Controllers\Client\Auth\Register\ShowRegisterPageController;
 use App\Http\Controllers\Client\Auth\VerifyController;
 use App\Http\Controllers\Client\HomeController;
+use App\Http\Controllers\Client\Quiz\AskQuizController;
+use App\Http\Controllers\Client\Quiz\ReplyQuizController;
 use App\Http\Middleware\SetDefaultLocaleForUrlsMiddleware;
 use App\Http\Middleware\SetupLocaleMiddleware;
 use Illuminate\Support\Facades\Route;
@@ -42,5 +44,8 @@ Route::prefix('{locale?}')
               ->name('dashboard.')
               ->group(function () {
                   Route::get('/', \App\Http\Controllers\Client\Dashboard\HomeController::class)->name('home');
+
+                  Route::get('quiz', AskQuizController::class)->name('quiz');
+                  Route::post('quiz/{question}', ReplyQuizController::class)->name('quiz.reply');
               });
      });

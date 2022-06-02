@@ -3,6 +3,7 @@
 namespace App\Services\Core\Question;
 
 use App\Models\Question;
+use App\Models\User;
 use App\Repositories\Question\QuestionRepository;
 use App\Repositories\Reply\ReplyRepository;
 use Illuminate\Database\Eloquent\Collection;
@@ -32,7 +33,12 @@ class QuestionService
 
     public function findById(string $id): ?Question
     {
-        return $this->questionRepository->findById($id);
+        $question = $this->questionRepository->findById($id);
+        if ( ! $question instanceof Question) {
+            return null;
+        }
+
+        return $this->hydrate($question);
     }
 
     public function create(array $attributes): Question
@@ -56,5 +62,17 @@ class QuestionService
     public function update(Question $question, array $attributes): bool
     {
         return $this->questionRepository->update($question->getId(), $attributes);
+    }
+
+    /**
+     * @return Question|Collection
+     */
+    public function getAllNotSeenByUser(User $user): Collection
+    {
+        $questions = $this->questionRepository->getAllNotSeenByUser($user->getId());
+
+        return $questions->transform(function (Question $question) {
+            return $this->hydrate($question);
+        });
     }
 }

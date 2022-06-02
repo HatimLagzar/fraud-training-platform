@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\App;
 
 class Reply extends Model
 {
@@ -33,6 +34,22 @@ class Reply extends Model
     public function getId(): int
     {
         return $this->getAttribute(self::ID_COLUMN);
+    }
+
+    public function getContentByLocale(): string
+    {
+        switch (App::getLocale()) {
+            case 'fr':
+                return $this->getContentFR();
+            case 'es':
+                return $this->getContentES();
+            case 'it':
+                return $this->getContentIT();
+            case 'de':
+                return $this->getContentDE();
+            default:
+                return $this->getContent();
+        }
     }
 
     public function getContent(): string

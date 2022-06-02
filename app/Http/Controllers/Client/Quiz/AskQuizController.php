@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Client\Dashboard;
+namespace App\Http\Controllers\Client\Quiz;
 
 use App\Http\Controllers\Controller;
+use App\Models\Question;
 use App\Models\User;
 use App\Services\Core\Question\QuestionService;
 use Illuminate\Support\Facades\Log;
 use Throwable;
 
-class HomeController extends Controller
+class AskQuizController extends Controller
 {
     private QuestionService $questionService;
 
@@ -23,19 +24,24 @@ class HomeController extends Controller
             /** @var User $user */
             $user = auth()->user();
 
-            $questions = $this->questionService->getAllNotSeenByUser($user);
+            $question = $this->questionService->getAllNotSeenByUser($user)->first();
+            if ( ! $question instanceof Question) {
+                return redirect()
+                    ->route('dashboard.home')
+                    ->with('success', 'All questions answered!');
+            }
 
-            return view('client.dashboard.home')
-                ->with('questions', $questions);
+            return view('client.quiz.ask')
+                ->with('question', $question);
         } catch (Throwable $e) {
-            Log::error('failed to show dashboard home', [
+            Log::error('failed to show question', [
                 'error_message' => $e->getMessage(),
                 'error_trace'   => $e->getTraceAsString()
             ]);
 
             return redirect()
                 ->route('home')
-                ->with('error', 'Error occurred, please retry later.');
+                ->with('error', 'Error occurred, please retry later!');
         }
     }
 }

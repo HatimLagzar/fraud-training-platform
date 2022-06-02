@@ -21,7 +21,7 @@ class IsAdminMiddleware
     public function handle(Request $request, Closure $next)
     {
         /** @var ?User $user */
-        $user = auth()->user();
+        $user = auth()->guard('admin')->user();
         if ( ! $user instanceof User || $user->isAdmin() === false) {
             return redirect()->route('admin.login');
         }
