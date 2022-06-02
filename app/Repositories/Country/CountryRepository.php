@@ -17,6 +17,13 @@ class CountryRepository extends AbstractEloquentRepository
                     ->get();
     }
 
+    public function findById(int $countryId): ?Country
+    {
+        return $this->getQueryBuilder()
+                    ->where(Country::ID_COLUMN, $countryId)
+                    ->first();
+    }
+
     protected function getModelClass(): string
     {
         return Country::class;

@@ -20,3 +20,21 @@
     color: white;
   }
 }
+
+.btn-secondary {
+  background-color: $secondary;
+  border-color: $secondary;
+  color: white;
+  border-radius: 3px;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  text-transform: capitalize;
+
+  &:hover,
+  &:active {
+    background-color: darken($secondary, 5%) !important;
+    border-color: darken($secondary, 5%) !important;
+    color: white;
+  }
+}

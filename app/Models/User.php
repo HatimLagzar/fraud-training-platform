@@ -76,4 +76,9 @@ class User extends Authenticatable
     {
         return $this->getType() === self::ADMIN_TYPE;
     }
+
+    public function getCountryId(): int
+    {
+        return $this->getAttribute(self::COUNTRY_ID_COLUMN);
+    }
 }

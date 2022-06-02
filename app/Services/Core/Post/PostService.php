@@ -3,21 +3,30 @@
 namespace App\Services\Core\Post;
 
 use App\Models\Post;
+use App\Repositories\Country\CountryRepository;
 use App\Repositories\Post\PostRepository;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Arr;
 
 class PostService
 {
     private PostRepository $postRepository;
+    private CountryRepository $countryRepository;
 
-    public function __construct(PostRepository $postRepository)
+    public function __construct(PostRepository $postRepository, CountryRepository $countryRepository)
     {
-        $this->postRepository = $postRepository;
+        $this->postRepository    = $postRepository;
+        $this->countryRepository = $countryRepository;
     }
 
     public function findById(string $id): ?Post
     {
-        return $this->postRepository->findById($id);
+        $post = $this->postRepository->findById($id);
+        if ( ! $post instanceof Post) {
+            return null;
+        }
+
+        return $this->hydrate($post);
     }
 
     public function create(array $attributes): Post
@@ -68,5 +77,27 @@ class PostService
         ]);
 
         return $this->postRepository->update($post->getId(), $attributes);
+    }
+
+    /**
+     * @param  int  $countryId
+     *
+     * @return Post[]|Collection
+     */
+    public function getAllByCountry(int $countryId): Collection
+    {
+        $posts = $this->postRepository->getAllByCountry($countryId);
+
+        return $posts->transform(function (Post $post) {
+            return $this->hydrate($post);
+        });
+    }
+
+    private function hydrate(Post $post): Post
+    {
+        $country = $this->countryRepository->findById($post->getCountryId());
+        $post->setCountry($country);
+
+        return $post;
     }
 }

@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\App;
 
 class Post extends Model
 {
@@ -23,6 +25,7 @@ class Post extends Model
     public const DESCRIPTION_IT_COLUMN = 'description_it';
     public const THUMBNAIL_FILE_NAME_COLUMN = 'thumbnail_file_name';
     public const COUNTRY_ID_COLUMN = 'country_id';
+    public const CREATED_AT_COLUMN = 'created_at';
 
     protected $table = self::TABLE;
     protected $fillable = [
@@ -40,9 +43,72 @@ class Post extends Model
         self::COUNTRY_ID_COLUMN,
     ];
 
+    protected $casts = [
+        self::CREATED_AT_COLUMN => 'datetime'
+    ];
+
+    private ?Country $country = null;
+
     public function getId(): int
     {
         return $this->getAttribute(self::ID_COLUMN);
+    }
+
+    public function getContentByLocale(): string
+    {
+        switch (App::getLocale()) {
+            case 'fr':
+                return $this->getContentFR();
+            case 'es':
+                return $this->getContentES();
+            case 'it':
+                return $this->getContentIT();
+            case 'de':
+                return $this->getContentDE();
+            default:
+                return $this->getContentEN();
+        }
+    }
+
+    public function getTitleByLocale(): string
+    {
+        switch (App::getLocale()) {
+            case 'fr':
+                return $this->getTitleFR();
+            case 'es':
+                return $this->getTitleES();
+            case 'it':
+                return $this->getTitleIT();
+            case 'de':
+                return $this->getTitleDE();
+            default:
+                return $this->getTitleEN();
+        }
+    }
+
+    public function getExcerptByLocale(): string
+    {
+        switch (App::getLocale()) {
+            case 'fr':
+                $content = $this->getContentFR();
+                break;
+            case 'es':
+                $content = $this->getContentES();
+                break;
+            case 'it':
+                $content = $this->getContentIT();
+                break;
+            case 'de':
+                $content = $this->getContentDE();
+                break;
+            default:
+                $content = $this->getContentEN();
+        }
+
+        $content = str_replace('<p>', '', $content);
+        $content = str_replace('<br>', ' ', $content);
+
+        return str_replace('</p>', ' ', $content);
     }
 
     public function getTitleEN(): string
@@ -103,5 +169,22 @@ class Post extends Model
     public function getCountryId(): ?int
     {
         return $this->getAttribute(self::COUNTRY_ID_COLUMN);
+    }
+
+    public function getCreatedAt(): Carbon
+    {
+        return $this->getAttribute(self::CREATED_AT_COLUMN);
+    }
+
+    public function getCountry(): ?Country
+    {
+        return $this->country;
+    }
+
+    public function setCountry(Country $country): self
+    {
+        $this->country = $country;
+
+        return $this;
     }
 }

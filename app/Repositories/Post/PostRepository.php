@@ -44,6 +44,16 @@ class PostRepository extends AbstractEloquentRepository
                     ->update($attributes) > 0;
     }
 
+    /**
+     * @return Post[]|Collection
+     */
+    public function getAllByCountry(int $countryId): Collection
+    {
+        return $this->getQueryBuilder()
+                    ->where(Post::COUNTRY_ID_COLUMN, $countryId)
+                    ->get();
+    }
+
     protected function getModelClass(): string
     {
         return Post::class;

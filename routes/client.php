@@ -7,6 +7,8 @@ use App\Http\Controllers\Client\Auth\Register\RegisterController;
 use App\Http\Controllers\Client\Auth\Register\ShowRegisterPageController;
 use App\Http\Controllers\Client\Auth\VerifyController;
 use App\Http\Controllers\Client\HomeController;
+use App\Http\Controllers\Client\Post\ListPostsController;
+use App\Http\Controllers\Client\Post\ShowPostController;
 use App\Http\Controllers\Client\Quiz\AskQuizController;
 use App\Http\Controllers\Client\Quiz\ReplyQuizController;
 use App\Http\Middleware\SetDefaultLocaleForUrlsMiddleware;
@@ -48,6 +50,11 @@ Route::prefix('{locale?}')
                   Route::prefix('quiz')->name('quiz.')->group(function () {
                       Route::get('quiz', AskQuizController::class)->name('ask');
                       Route::post('quiz/{question}', ReplyQuizController::class)->name('reply');
+                  });
+
+                  Route::prefix('posts')->name('posts.')->group(function () {
+                      Route::get('/', ListPostsController::class)->name('index');
+                      Route::get('{id}', ShowPostController::class)->name('show');
                   });
               });
      });

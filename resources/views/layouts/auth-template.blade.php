@@ -28,7 +28,7 @@
             <a class="nav-link" href="{{ route('dashboard.home') }}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('dashboard.home') }}">Posts</a>
+            <a class="nav-link" href="{{ route('dashboard.posts.index') }}">Posts</a>
           </li>
           <li class="nav-item">
             <form action="{{ route('logout') }}" class="d-inline-block" method="POST">
