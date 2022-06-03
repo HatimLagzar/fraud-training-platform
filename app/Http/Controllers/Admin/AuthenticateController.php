@@ -26,7 +26,8 @@ class AuthenticateController extends Controller
             if ( ! $this->loginService->login(
                 $request->get('email'),
                 $request->get('password'),
-                User::ADMIN_TYPE
+                User::ADMIN_TYPE,
+                'admin'
             )) {
                 return redirect()
                     ->route('admin.login')
