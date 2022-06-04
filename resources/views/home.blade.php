@@ -121,18 +121,23 @@
     <section id="contact">
       <h2 class="section-title">Get in touch</h2>
       <div class="container">
-        <form action="#" method="POST">
+        <form action="{{ route('contact') }}" method="POST">
+          @csrf
+
           <div class="input-group mb-2">
-            <input type="text" placeholder="Name" class="form-control">
+            <input type="text" placeholder="Name" class="form-control" name="name">
           </div>
+
           <div class="input-group mb-2">
-            <input type="text" placeholder="Subject" class="form-control">
+            <input type="text" placeholder="Subject" class="form-control" name="subject">
           </div>
+
           <div class="input-group mb-2">
-            <input type="email" placeholder="Email Address" class="form-control">
+            <input type="email" placeholder="Email Address" class="form-control" name="email">
           </div>
+
           <div class="input-group mb-2">
-            <textarea placeholder="Message" class="form-control"></textarea>
+            <textarea placeholder="Message" class="form-control" name="message"></textarea>
           </div>
 
           <div class="input-group">

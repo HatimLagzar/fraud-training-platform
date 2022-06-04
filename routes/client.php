@@ -6,6 +6,7 @@ use App\Http\Controllers\Client\Auth\LogoutController;
 use App\Http\Controllers\Client\Auth\Register\RegisterController;
 use App\Http\Controllers\Client\Auth\Register\ShowRegisterPageController;
 use App\Http\Controllers\Client\Auth\VerifyController;
+use App\Http\Controllers\Client\Contact\ContactUsController;
 use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\Post\ListPostsController;
 use App\Http\Controllers\Client\Post\ShowPostController;
@@ -32,6 +33,8 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('{locale?}')
      ->middleware([SetupLocaleMiddleware::class, SetDefaultLocaleForUrlsMiddleware::class])
      ->group(function () {
+         Route::post('contact', ContactUsController::class)->name('contact');
+
          Route::get('/', HomeController::class)->name('home');
          Route::get('login', ShowLoginPageController::class)->name('login-page');
          Route::post('login', LoginController::class)->name('login');
