@@ -9,7 +9,7 @@
 @section('content')
   <div class="container mt-5">
     <section>
-      <h1 class="section-title">You're connected as {{ auth()->user()->getName() }}</h1>
+      <h1 class="section-title">You're connected as {{ auth()->guard('web')->user()->getName() }}</h1>
       <p>Welcome to your dashboard</p>
 
       @if($questions->count() > 0)

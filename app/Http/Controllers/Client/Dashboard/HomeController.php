@@ -21,7 +21,7 @@ class HomeController extends Controller
     {
         try {
             /** @var User $user */
-            $user = auth()->user();
+            $user = auth()->guard('web')->user();
 
             $questions = $this->questionService->getAllNotSeenByUser($user);
 

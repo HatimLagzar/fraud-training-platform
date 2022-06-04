@@ -22,7 +22,7 @@ class AskQuizController extends Controller
     {
         try {
             /** @var User $user */
-            $user = auth()->user();
+            $user = auth()->guard('web')->user();
 
             $question = $this->questionService->getAllNotSeenByUser($user)->first();
             if ( ! $question instanceof Question) {

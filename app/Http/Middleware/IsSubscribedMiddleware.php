@@ -21,7 +21,7 @@ class IsSubscribedMiddleware
     public function handle(Request $request, Closure $next)
     {
         /** @var User $user */
-        $user = auth()->user();
+        $user = auth()->guard('web')->user();
 
         if ($user->subscribed() === false) {
             return redirect()

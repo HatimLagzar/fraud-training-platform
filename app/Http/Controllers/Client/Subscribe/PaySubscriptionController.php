@@ -18,7 +18,7 @@ class PaySubscriptionController extends Controller
     {
         try {
             /** @var User $user */
-            $user = auth()->user();
+            $user = auth()->guard('web')->user();
 
             if ($user->subscribed()) {
                 return redirect()

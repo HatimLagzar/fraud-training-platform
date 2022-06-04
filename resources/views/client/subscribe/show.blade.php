@@ -15,7 +15,7 @@
         @csrf
 
         <div class="input-group mb-2">
-          <input class="form-control w-100" type="text" name="card-holder-name" id="card-holder-name" placeholder="Card holder">
+          <input class="form-control w-100" type="text" name="card-holder-name" id="card-holder-name" placeholder="Card Holder Name">
         </div>
 
         <div id="card-element"></div>
@@ -31,23 +31,20 @@
 
   <style>
       #subscribe-page form input {
-          border: 1px solid #aab7c4 !important;
-          font-size: 16px !important;
+          border: 2px solid #000 !important;
           font-weight: 400;
           min-width: auto;
           max-width: none;
           text-align: left !important;
-          border-radius: 4px;
       }
 
-      #subscribe-page ::placeholder {
-          color: #aab7c4 !important;
-      }
+      /*#subscribe-page ::placeholder {*/
+      /*    color: #aab7c4 !important;*/
+      /*}*/
 
       #card-element {
           padding: .5rem .75rem;
-          border: 1px solid #aab7c4 !important;
-          border-radius: 4px;
+          border: 2px solid #000 !important;
       }
   </style>
 
@@ -61,9 +58,9 @@
               border: '2px solid #000',
               fontFamily: 'Roboto, sans-serif',
               fontSmoothing: 'antialiased',
-              fontSize: '16px',
+              fontSize: '18px',
               '::placeholder': {
-                  color: '#aab7c4'
+                  color: '#000'
               }
           },
           invalid: {

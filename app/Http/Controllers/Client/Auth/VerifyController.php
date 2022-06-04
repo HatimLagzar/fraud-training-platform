@@ -24,7 +24,7 @@ class VerifyController extends Controller
         $this->userService       = $userService;
     }
 
-    public function __invoke(int $id, string $token)
+    public function __invoke(?string $locale, int $id, string $token)
     {
         try {
             $user = $this->userService->findById($id);

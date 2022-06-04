@@ -33,7 +33,7 @@ class ReplyQuizController extends Controller
     {
         try {
             /** @var User $user */
-            $user = auth()->user();
+            $user = auth()->guard('web')->user();
 
             $reply = $this->replyService->findById($request->get('reply_id'));
             if ( ! $reply instanceof Reply) {

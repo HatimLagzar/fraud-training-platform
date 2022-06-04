@@ -21,7 +21,7 @@ class ListPostsController extends Controller
     {
         try {
             /** @var User $user */
-            $user = auth()->user();
+            $user = auth()->guard('web')->user();
 
             $posts = $this->postService->getAllByCountry($user->getCountryId());
 

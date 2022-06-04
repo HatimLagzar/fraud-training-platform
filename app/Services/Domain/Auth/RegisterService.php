@@ -42,7 +42,7 @@ class RegisterService
             User::TYPE_COLUMN               => User::NORMAL_TYPE,
         ]);
 
-        Mail::to($user)->send(new EmailVerificationMail($user));
+        Mail::to($user)->queue(new EmailVerificationMail($user));
 
         return $user;
     }
