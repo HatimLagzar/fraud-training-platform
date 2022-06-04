@@ -27,6 +27,7 @@ class PostRepository extends AbstractEloquentRepository
     public function getAll(): Collection
     {
         return $this->getQueryBuilder()
+                    ->orderBy(Post::CREATED_AT_COLUMN, 'DESC')
                     ->get();
     }
 
@@ -51,6 +52,7 @@ class PostRepository extends AbstractEloquentRepository
     {
         return $this->getQueryBuilder()
                     ->where(Post::COUNTRY_ID_COLUMN, $countryId)
+                    ->orderBy(Post::CREATED_AT_COLUMN, 'DESC')
                     ->get();
     }
 
