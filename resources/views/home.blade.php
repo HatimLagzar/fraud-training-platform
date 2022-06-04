@@ -36,6 +36,7 @@
                 <li class="nav-item">
                   <a class="nav-link" href="#contact">Contact</a>
                 </li>
+                <x-flags-menu></x-flags-menu>
               </ul>
             </div>
           </div>
@@ -58,6 +59,7 @@
                 <li class="nav-item">
                   <a class="nav-link" href="#contact">Contact</a>
                 </li>
+                <x-flags-menu></x-flags-menu>
               </ul>
             </div>
           </div>

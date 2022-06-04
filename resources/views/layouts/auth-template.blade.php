@@ -36,6 +36,7 @@
               <button class="btn btn-transparent nav-link text-white" type="submit">Logout</button>
             </form>
           </li>
+          <x-flags-menu></x-flags-menu>
         </ul>
       </div>
     </div>
