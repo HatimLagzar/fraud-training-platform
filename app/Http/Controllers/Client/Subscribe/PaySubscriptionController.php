@@ -30,8 +30,7 @@ class PaySubscriptionController extends Controller
                  ->create($request->get('paymentMethodId'));
 
             return redirect()
-                ->route('dashboard.home')
-                ->with('success', 'You have subscribed successfully.');
+                ->route('dashboard.subscribe.success');
         } catch (IncompletePayment $e) {
             return redirect()->route(
                 'cashier.payment',

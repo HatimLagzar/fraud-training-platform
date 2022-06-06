@@ -14,6 +14,7 @@ use App\Http\Controllers\Client\Quiz\AskQuizController;
 use App\Http\Controllers\Client\Quiz\ReplyQuizController;
 use App\Http\Controllers\Client\Subscribe\PaySubscriptionController;
 use App\Http\Controllers\Client\Subscribe\ShowSubscriptionPageController;
+use App\Http\Controllers\Client\Subscribe\ShowSuccessPageController;
 use App\Http\Middleware\IsSubscribedMiddleware;
 use App\Http\Middleware\SetDefaultLocaleForUrlsMiddleware;
 use App\Http\Middleware\SetupLocaleMiddleware;
@@ -53,6 +54,7 @@ Route::prefix('{locale?}')
               ->group(function () {
                   Route::prefix('subscribe')->name('subscribe.')->group(function () {
                       Route::get('/', ShowSubscriptionPageController::class)->name('show');
+                      Route::get('success', ShowSuccessPageController::class)->name('success');
                       Route::post('/', PaySubscriptionController::class)->name('pay');
                   });
 
