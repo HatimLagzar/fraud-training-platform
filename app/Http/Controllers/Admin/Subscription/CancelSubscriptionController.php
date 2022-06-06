@@ -44,7 +44,7 @@ class CancelSubscriptionController extends Controller
 
             return redirect()
                 ->route('admin.home')
-                ->with('error', 'Error occurred, please retry later.');
+                ->with('error', 'Error occurred, please retry later!');
         }
     }
 }

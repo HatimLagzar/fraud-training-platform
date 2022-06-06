@@ -1,9 +1,9 @@
 @php
-    /** @var $countries \App\Models\Country[] */
+  /** @var $countries \App\Models\Country[] */
 @endphp
 @extends('layouts.noauth-template')
 @section('title')
-{{ __("Login") }}
+  {{ __("Login") }}
 @endsection
 @section('content')
     <div id="register-page">
@@ -30,44 +30,49 @@
             </div>
         </nav>
 
-        <section id="register-section">
-            @if (session('error'))
-                <div class="container">
-                    <div class="alert alert-danger mb-5 w-50 mx-auto" role="alert">
-                        {{ session('error') }}
-                    </div>
-                </div>
-            @endif
-            @if (session('success'))
-                <div class="container">
-                    <div class="alert alert-success mb-5 w-50 mx-auto" role="alert">
-                        {{ session('success') }}
-                    </div>
-                </div>
-            @endif
-            <h1 class="section-title">{{__('Please Login')}}</h1>
-            <form action="{{ route('login') }}" method="POST">
-                @csrf
-                <div class="input-group mb-2">
-                    <input type="email" placeholder="{{__('Email Address')}}" class="form-control @error('email') is-invalid @enderror" name="email" required>
-                    <div class="invalid-feedback">
-                        @error('email')
-                        {{ $message }}
-                        @enderror
-                    </div>
-                </div>
-                <div class="input-group mb-2">
-                    <input type="password" placeholder="{{__('Password')}}" class="form-control @error('password') is-invalid @enderror" name="password" required>
-                    <div class="invalid-feedback">
-                        @error('password')
-                        {{ $message }}
-                        @enderror
-                    </div>
-                </div>
-                <div class="input-group">
-                    <button class="btn btn-primary">{{__('Login')}}</button>
-                </div>
-            </form>
-        </section>
-    </div>
+    <section id="register-section">
+      @if (session('error'))
+        <div class="container">
+          <div class="alert alert-danger mb-5 w-50 mx-auto" role="alert">
+            {{ session('error') }}
+          </div>
+        </div>
+      @endif
+      @if (session('success'))
+        <div class="container">
+          <div class="alert alert-success mb-5 w-50 mx-auto" role="alert">
+            {{ session('success') }}
+          </div>
+        </div>
+      @endif
+      <h1 class="section-title">{{__('Please Login')}}</h1>
+      <form action="{{ route('login') }}" method="POST">
+        @csrf
+
+        <div class="input-group mb-2">
+          <input type="email" placeholder="{{__('Email Address')}}" class="form-control @error('email') is-invalid @enderror" name="email" required>
+          <div class="invalid-feedback">
+            @error('email')
+            {{ $message }}
+            @enderror
+          </div>
+        </div>
+
+        <div class="input-group mb-2">
+          <input type="password" placeholder="{{__('Password')}}" class="form-control @error('password') is-invalid @enderror" name="password" required>
+          <div class="invalid-feedback">
+            @error('password')
+            {{ $message }}
+            @enderror
+          </div>
+        </div>
+
+        <div class="input-group">
+          <button class="btn btn-primary">{{__('Login')}}</button>
+        </div>
+
+        <a href="{{ route('password.request') }}" class="text-center d-block mt-2 text-black">{{__('Reset Password')}}</a>
+      </form>
+    </section>
+  </div>
 @endsection

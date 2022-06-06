@@ -44,7 +44,7 @@ class PaySubscriptionController extends Controller
 
             return redirect()
                 ->back()
-                ->with('error', 'Error occurred, please retry later.');
+                ->with('error', 'Error occurred, please retry later!');
         }
     }
 }
