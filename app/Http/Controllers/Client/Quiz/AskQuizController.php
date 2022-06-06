@@ -28,7 +28,7 @@ class AskQuizController extends Controller
             if ( ! $question instanceof Question) {
                 return redirect()
                     ->route('dashboard.home')
-                    ->with('success', 'All questions answered!');
+                    ->with('success', __('All questions answered!'));
             }
 
             return view('client.quiz.ask')
@@ -41,7 +41,7 @@ class AskQuizController extends Controller
 
             return redirect()
                 ->route('home')
-                ->with('error', 'Error occurred, please retry later!');
+                ->with('error', __('Error occurred, please retry later!'));
         }
     }
 }

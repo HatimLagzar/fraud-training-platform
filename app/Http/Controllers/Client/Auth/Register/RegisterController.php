@@ -34,11 +34,11 @@ class RegisterController extends Controller
 
             return redirect()
                 ->route('dashboard.subscribe.show')
-                ->with('success', 'Account created successfully!');
+                ->with('success', __('Account created successfully!'));
         } catch (EmailAlreadyInUseException $e) {
             return redirect()
                 ->route('register-page')
-                ->with('error', 'Email already in use!');
+                ->with('error', __('Email already in use!'));
         } catch (Throwable $e) {
             Log::error('failed to register', [
                 'error_message' => $e->getMessage(),
@@ -47,7 +47,7 @@ class RegisterController extends Controller
 
             return redirect()
                 ->route('register-page')
-                ->with('error', 'Error occurred, please retry later!');
+                ->with('error', __('Error occurred, please retry later!'));
         }
     }
 }

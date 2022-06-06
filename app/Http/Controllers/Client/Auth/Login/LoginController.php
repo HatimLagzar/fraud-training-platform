@@ -29,12 +29,12 @@ class LoginController extends Controller
             if ($isSuccessful === false) {
                 return redirect()
                     ->back()
-                    ->with('error', 'Incorrect credentials!');
+                    ->with('error', __('Incorrect credentials!'));
             }
 
             return redirect()
                 ->route('dashboard.home')
-                ->with('success', 'You did login successfully.');
+                ->with('success', __('You did login successfully.'));
         } catch (Throwable $e) {
             Log::error('failed to login', [
                 'error_message' => $e->getMessage(),
@@ -43,7 +43,7 @@ class LoginController extends Controller
 
             return redirect()
                 ->back()
-                ->with('error', 'Error occurred, please retry later!');
+                ->with('error', __('Error occurred, please retry later!'));
         }
     }
 }

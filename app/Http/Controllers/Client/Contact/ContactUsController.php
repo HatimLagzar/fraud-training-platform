@@ -31,7 +31,7 @@ class ContactUsController extends Controller
 
             return redirect()
                 ->back()
-                ->with('success', 'Your message has been sent successfully.');
+                ->with('success', __('Your message has been sent successfully.'));
         } catch (Throwable $e) {
             Log::error('failed to contact us', [
                 'error_trace' => $e->getMessage()
@@ -39,7 +39,7 @@ class ContactUsController extends Controller
 
             return redirect()
                 ->back()
-                ->with('error', 'Error occurred, please retry later!');
+                ->with('error', __('Error occurred, please retry later!'));
         }
     }
 }

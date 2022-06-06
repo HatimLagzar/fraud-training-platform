@@ -30,7 +30,7 @@ class ShowPostController extends Controller
 
             return redirect()
                 ->route('dashboard.home')
-                ->with('error', 'Error occurred, please retry later!');
+                ->with('error', __('Error occurred, please retry later!'));
         }
     }
 }

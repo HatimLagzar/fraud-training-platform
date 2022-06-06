@@ -15,7 +15,7 @@ class ShowSubscriptionPageController extends Controller
         if ($user->subscribed()) {
             return redirect()
                 ->route('dashboard.home')
-                ->with('error', 'You are already subscribed!');
+                ->with('error', __('You are already subscribed!'));
         }
 
         return view('client.subscribe.show')

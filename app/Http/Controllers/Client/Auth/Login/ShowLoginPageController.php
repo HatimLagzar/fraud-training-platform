@@ -19,7 +19,7 @@ class ShowLoginPageController extends Controller
 
             return redirect()
                 ->route('home')
-                ->with('error', 'Error occurred, please retry later!');
+                ->with('error', __('Error occurred, please retry later!'));
         }
     }
 }

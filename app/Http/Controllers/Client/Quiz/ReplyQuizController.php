@@ -39,7 +39,7 @@ class ReplyQuizController extends Controller
             if ( ! $reply instanceof Reply) {
                 return redirect()
                     ->back()
-                    ->with('error', 'Reply not found!');
+                    ->with('error', __('Reply not found!'));
             }
 
             $question = $this->questionService->findById($question->getId());
@@ -57,7 +57,7 @@ class ReplyQuizController extends Controller
 
             return redirect()
                 ->route('home')
-                ->with('error', 'Error occurred, please retry later!');
+                ->with('error', __('Error occurred, please retry later!'));
         }
     }
 }

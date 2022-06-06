@@ -23,7 +23,7 @@ class PaySubscriptionController extends Controller
             if ($user->subscribed()) {
                 return redirect()
                     ->route('dashboard.home')
-                    ->with('error', 'You are already subscribed!');
+                    ->with('error', __('You are already subscribed!'));
             }
 
             $user->newSubscription('default', self::PLAN_STRIPE_ID)
@@ -44,7 +44,7 @@ class PaySubscriptionController extends Controller
 
             return redirect()
                 ->back()
-                ->with('error', 'Error occurred, please retry later!');
+                ->with('error', __('Error occurred, please retry later!'));
         }
     }
 }

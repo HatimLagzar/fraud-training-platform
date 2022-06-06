@@ -22,7 +22,7 @@ class ResendVerificationController extends Controller
 
             return redirect()
                 ->route('verification.ask')
-                ->with('success', 'Verification link was sent successfully!');
+                ->with('success', __('Verification link was sent successfully!'));
         } catch (Throwable $e) {
             Log::error('failed to resend verification link', [
                 'error_message' => $e->getMessage(),
@@ -31,7 +31,7 @@ class ResendVerificationController extends Controller
 
             return redirect()
                 ->route('verification.ask')
-                ->with('error', 'Error occurred, please retry later!');
+                ->with('error', __('Error occurred, please retry later!'));
         }
     }
 }
