@@ -10,7 +10,7 @@
   <div class="container mt-5">
     <section>
       <h1>{{__('Please answer the following question')}}</h1>
-      <h3>{{__(Question)}}</h3>
+      <h3>{{__('Question')}}</h3>
       <p>{{ $question->getContentByLocale() }}</p>
 
       <h3>{{__('Replies')}}</h3>
