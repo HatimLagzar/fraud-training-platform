@@ -25,13 +25,16 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
               <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link" href="{{ route('dashboard.home') }}">Dashboard</a>
+                  <a class="nav-link" href="{{ route('dashboard.quiz.ask') }}">{{ __('Training') }}</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{{ route('dashboard.quiz.ask') }}">Train</a>
+                  <a class="nav-link" href="{{ route('dashboard.home') }}">{{ __('Posts') }}</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{{ route('dashboard.home') }}">Articles</a>
+                  <form action="{{ route('logout') }}" class="d-inline-block" method="POST">
+                    @csrf
+                    <button class="btn btn-transparent nav-link text-white" type="submit">{{ __('Logout') }}</button>
+                  </form>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="/#contact">{{ __('Contact') }}</a>
@@ -67,11 +70,11 @@
       @endif
 
       <div id="hero">
-      <h1>{!! __('Protect the money on<br>your credit card FROM FRAUD NOW') !!}</h1>
+        <h1>{!! __('Protect the money on<br>your credit card FROM FRAUD NOW') !!}</h1>
 
-<p>{{ __('Protect yourself and your money from scammers on the internet by using our training to level up your knowledge of internet security and get our daily notifications about trending scams types and ways to protect against them.') }}</p>
+        <p>{{ __('Protect yourself and your money from scammers on the internet by using our training to level up your knowledge of internet security and get our daily notifications about trending scams types and ways to protect against them.') }}</p>
 
-<a href="#" class="btn btn-primary">{{ __('Train Now') }}</a>
+        <a href="#" class="btn btn-primary">{{ __('Train Now') }}</a>
       </div>
     </header>
 
