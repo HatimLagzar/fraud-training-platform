@@ -25,7 +25,7 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('dashboard.home') }}">Posts</a>
+            <a class="nav-link" href="{{ route('dashboard.home') }}">{{__('Posts')}}</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ route('dashboard.settings.index') }}">{{ __('Settings') }}</a>
@@ -33,7 +33,7 @@
           <li class="nav-item">
             <form action="{{ route('logout') }}" class="d-inline-block" method="POST">
               @csrf
-              <button class="btn btn-transparent nav-link text-white" type="submit">Logout</button>
+              <button class="btn btn-transparent nav-link text-white" type="submit">{{__('Logout')}}</button>
             </form>
           </li>
           <x-flags-menu></x-flags-menu>

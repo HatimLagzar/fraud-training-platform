@@ -4,16 +4,16 @@
 
 @extends('layouts.auth-template')
 @section('title')
-  Quiz
+  {{__('Quiz')}}
 @endsection
 @section('content')
   <div class="container mt-5">
     <section>
-      <h1>Please answer the following question</h1>
-      <h3>Question</h3>
+      <h1>{{__('Please answer the following question')}}</h1>
+      <h3>{{__(Question)}}</h3>
       <p>{{ $question->getContentByLocale() }}</p>
 
-      <h3>Replies</h3>
+      <h3>{{__('Replies')}}</h3>
       <form action="{{ route('dashboard.quiz.reply', ['question' => $question]) }}" method="POST">
         @csrf
 
@@ -36,7 +36,7 @@
 
         <div class="input-group mt-3">
           <a class="btn btn-primary m-0 fs-6 px-4" href="{{ route('dashboard.quiz.ask') }}">
-            Next Question<i class="fa fa-arrow-right ms-2"></i>
+            {{__('Next Question')}}<i class="fa fa-arrow-right ms-2"></i>
           </a>
         </div>
       </form>
