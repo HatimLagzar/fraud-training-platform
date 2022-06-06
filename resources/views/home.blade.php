@@ -31,10 +31,10 @@
                   <a class="nav-link" href="{{ route('dashboard.quiz.ask') }}">Train</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{{ route('dashboard.posts.index') }}">Articles</a>
+                  <a class="nav-link" href="{{ route('dashboard.home') }}">Articles</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#contact">{{ __('Contact') }}</a>
+                  <a class="nav-link" href="/#contact">{{ __('Contact') }}</a>
                 </li>
                 <x-flags-menu></x-flags-menu>
               </ul>
