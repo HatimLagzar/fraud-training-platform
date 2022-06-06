@@ -17,6 +17,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('newsletter:send')->daily();
+        $schedule->command('auth:clear-resets')->everyFifteenMinutes();
     }
 
     /**

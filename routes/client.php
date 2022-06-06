@@ -71,6 +71,7 @@ Route::prefix('{locale?}')->where(['locale' => 'en|fr|de|es|it'])
              Route::post('update', SetNewPasswordController::class)
                   ->name('update');
          });
+
          Route::name('verification.')->group(function () {
              Route::get('email/verify/{id}/{hash}', VerifyController::class)
                   ->name('verify');
