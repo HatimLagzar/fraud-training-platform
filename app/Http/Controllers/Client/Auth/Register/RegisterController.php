@@ -7,6 +7,7 @@ use App\Http\Requests\RegisterRequest;
 use App\Services\Domain\Auth\Exceptions\EmailAlreadyInUseException;
 use App\Services\Domain\Auth\RegisterService;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Throwable;
 
@@ -22,16 +23,18 @@ class RegisterController extends Controller
     public function __invoke(RegisterRequest $request): RedirectResponse
     {
         try {
-            $this->registerService->register(
+            $user = $this->registerService->register(
                 $request->get('name'),
                 $request->get('email'),
                 $request->get('password'),
                 $request->get('country'),
             );
 
+            Auth::login($user);
+
             return redirect()
-                ->route('home')
-                ->with('success', 'Please click on the click sent to your email to activate your account.');
+                ->route('dashboard.subscribe.show')
+                ->with('success', 'Account created successfully!');
         } catch (EmailAlreadyInUseException $e) {
             return redirect()
                 ->route('register-page')
