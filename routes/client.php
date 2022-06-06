@@ -14,6 +14,7 @@ use App\Http\Controllers\Client\Post\ListPostsController;
 use App\Http\Controllers\Client\Post\ShowPostController;
 use App\Http\Controllers\Client\Quiz\AskQuizController;
 use App\Http\Controllers\Client\Quiz\ReplyQuizController;
+use App\Http\Controllers\Client\Settings\Password\UpdatePasswordController;
 use App\Http\Controllers\Client\Settings\ShowSettingsPageController;
 use App\Http\Controllers\Client\Settings\Subscription\RequestCancelSubscriptionController;
 use App\Http\Controllers\Client\Subscribe\PaySubscriptionController;
@@ -69,6 +70,10 @@ Route::prefix('{locale?}')
               ->group(function () {
                   Route::post('cancel-subscription', RequestCancelSubscriptionController::class)
                        ->name('cancel-subscription');
+
+                  Route::name('password.')->group(function () {
+                      Route::post('password', UpdatePasswordController::class)->name('update');
+                  });
 
                   Route::prefix('subscribe')->name('subscribe.')->group(function () {
                       Route::get('/', ShowSubscriptionPageController::class)->name('show');
