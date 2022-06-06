@@ -38,7 +38,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('{locale?}')
+Route::prefix('{locale?}')->where(
+    ['locale' => 'en|fr|de|es|it'],
+)
      ->middleware([SetupLocaleMiddleware::class, SetDefaultLocaleForUrlsMiddleware::class])
      ->group(function () {
          Route::post('contact', ContactUsController::class)->name('contact');
