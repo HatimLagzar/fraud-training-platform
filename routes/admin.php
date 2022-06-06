@@ -15,6 +15,8 @@ use App\Http\Controllers\Admin\Question\EditQuestionController;
 use App\Http\Controllers\Admin\Question\ListQuestionsController;
 use App\Http\Controllers\Admin\Question\StoreQuestionController;
 use App\Http\Controllers\Admin\Question\UpdateQuestionController;
+use App\Http\Controllers\Admin\Subscription\CancelSubscriptionController;
+use App\Http\Controllers\Admin\Subscription\ShowRequestsToCancelController;
 use App\Http\Middleware\IsAdminMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -54,5 +56,12 @@ Route::middleware(IsAdminMiddleware::class)->group(function () {
         Route::get('{post}/edit', EditPostController::class)->name('edit');
         Route::post('{post}', UpdatePostController::class)->name('update');
         Route::delete('{post}', DeletePostController::class)->name('delete');
+    });
+
+    Route::prefix('subscriptions')->name('subscriptions.')->group(function () {
+        Route::get('cancel-requests', ShowRequestsToCancelController::class)
+             ->name('cancel-requests.index');
+        Route::post('{userId}/cancel', CancelSubscriptionController::class)
+             ->name('cancel');
     });
 });

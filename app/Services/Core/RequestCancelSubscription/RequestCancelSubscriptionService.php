@@ -26,4 +26,14 @@ class RequestCancelSubscriptionService
             RequestCancelSubscription::USER_ID_COLUMN => $user->getId()
         ]);
     }
+
+    public function getAll()
+    {
+        return $this->requestCancelSubscriptionRepository->getAll();
+    }
+
+    public function removeByUser(User $user): bool
+    {
+        return $this->requestCancelSubscriptionRepository->removeByUser($user->getId());
+    }
 }
