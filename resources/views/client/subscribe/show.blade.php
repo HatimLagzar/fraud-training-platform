@@ -23,7 +23,7 @@
 
         <button id="card-button"
                 class="btn btn-primary mt-3 d-block">
-          Subscribe Now
+          Subscribe Now with only USD $1
         </button>
       </form>
     </div>
