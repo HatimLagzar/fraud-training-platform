@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\Client\Auth\AskForVerificationController;
 use App\Http\Controllers\Client\Auth\Login\LoginController;
 use App\Http\Controllers\Client\Auth\Login\ShowLoginPageController;
 use App\Http\Controllers\Client\Auth\LogoutController;
 use App\Http\Controllers\Client\Auth\Register\RegisterController;
 use App\Http\Controllers\Client\Auth\Register\ShowRegisterPageController;
+use App\Http\Controllers\Client\Auth\ResendVerificationController;
 use App\Http\Controllers\Client\Auth\VerifyController;
 use App\Http\Controllers\Client\Contact\ContactUsController;
 use App\Http\Controllers\Client\Dashboard\HomeController as DashboardHomeController;
@@ -16,6 +18,7 @@ use App\Http\Controllers\Client\Quiz\ReplyQuizController;
 use App\Http\Controllers\Client\Subscribe\PaySubscriptionController;
 use App\Http\Controllers\Client\Subscribe\ShowSubscriptionPageController;
 use App\Http\Controllers\Client\Subscribe\ShowSuccessPageController;
+use App\Http\Middleware\HasVerifiedEmailAddressMiddleware;
 use App\Http\Middleware\IsMissingQuizMiddleware;
 use App\Http\Middleware\IsSubscribedMiddleware;
 use App\Http\Middleware\SetDefaultLocaleForUrlsMiddleware;
@@ -47,8 +50,17 @@ Route::prefix('{locale?}')
          Route::get('register', ShowRegisterPageController::class)->name('register-page');
          Route::post('register', RegisterController::class)->name('register');
 
-         Route::get('email/verify/{id}/{hash}', VerifyController::class)
-              ->name('verification.verify');
+         Route::name('verification.')->group(function () {
+             Route::get('email/verify/{id}/{hash}', VerifyController::class)
+                  ->name('verify');
+
+             Route::prefix('verification')->middleware('auth')->group(function () {
+                 Route::get('/', AskForVerificationController::class)
+                      ->name('ask');
+                 Route::post('resend', ResendVerificationController::class)
+                      ->name('resend');
+             });
+         });
 
          Route::prefix('dashboard')
               ->middleware('auth')
@@ -61,12 +73,15 @@ Route::prefix('{locale?}')
                   });
 
                   Route::middleware(IsSubscribedMiddleware::class)->group(function () {
-                      Route::prefix('quiz')->name('quiz.')->group(function () {
+                      Route::prefix('quiz')->middleware(HasVerifiedEmailAddressMiddleware::class)->name('quiz.')->group(function () {
                           Route::get('quiz', AskQuizController::class)->name('ask');
                           Route::post('quiz/{question}', ReplyQuizController::class)->name('reply');
                       });
 
-                      Route::middleware(IsMissingQuizMiddleware::class)->group(function () {
+                      Route::middleware([
+                          IsMissingQuizMiddleware::class,
+                          HasVerifiedEmailAddressMiddleware::class
+                      ])->group(function () {
                           Route::get('/', DashboardHomeController::class)->name('home');
 
                           Route::prefix('posts')->name('posts.')->group(function () {

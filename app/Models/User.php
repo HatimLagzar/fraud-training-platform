@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -82,5 +83,10 @@ class User extends Authenticatable
     public function getCountryId(): int
     {
         return $this->getAttribute(self::COUNTRY_ID_COLUMN);
+    }
+
+    public function getEmailVerifiedAt(): Carbon
+    {
+        return $this->getAttribute(self::EMAIL_VERIFIED_AT_COLUMN);
     }
 }
