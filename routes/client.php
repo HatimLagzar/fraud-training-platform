@@ -9,7 +9,6 @@ use App\Http\Controllers\Client\Auth\Register\ShowRegisterPageController;
 use App\Http\Controllers\Client\Auth\ResendVerificationController;
 use App\Http\Controllers\Client\Auth\VerifyController;
 use App\Http\Controllers\Client\Contact\ContactUsController;
-use App\Http\Controllers\Client\Dashboard\HomeController as DashboardHomeController;
 use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\Post\ListPostsController;
 use App\Http\Controllers\Client\Post\ShowPostController;
@@ -82,10 +81,9 @@ Route::prefix('{locale?}')
                           IsMissingQuizMiddleware::class,
                           HasVerifiedEmailAddressMiddleware::class
                       ])->group(function () {
-                          Route::get('/', DashboardHomeController::class)->name('home');
+                          Route::get('/', ListPostsController::class)->name('home');
 
                           Route::prefix('posts')->name('posts.')->group(function () {
-                              Route::get('/', ListPostsController::class)->name('index');
                               Route::get('{id}', ShowPostController::class)->name('show');
                           });
                       });

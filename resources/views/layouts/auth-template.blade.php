@@ -25,10 +25,10 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('dashboard.home') }}">Home</a>
+            <a class="nav-link" href="{{ route('dashboard.home') }}">Posts</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('dashboard.posts.index') }}">Posts</a>
+            <a class="nav-link" href="{{ route('dashboard.home') }}">{{ __('Settings') }}</a>
           </li>
           <li class="nav-item">
             <form action="{{ route('logout') }}" class="d-inline-block" method="POST">
