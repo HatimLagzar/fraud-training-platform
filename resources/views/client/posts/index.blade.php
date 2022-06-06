@@ -15,7 +15,7 @@
           <div class="post-item mb-5">
             <div class="row">
               <div class="col-lg-3 col-12">
-                <img src="/storage/posts_thumbnails/{{ $post->getThumbnailFileName() }}" alt="{{ $post->getTitleByLocale() }}">
+                <img class="mb-2" src="/storage/posts_thumbnails/{{ $post->getThumbnailFileName() }}" alt="{{ $post->getTitleByLocale() }}">
               </div>
               <div class="col">
                 <h3>{{ $post->getTitleByLocale() }}</h3>

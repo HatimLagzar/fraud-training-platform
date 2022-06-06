@@ -13,10 +13,8 @@
         <section>
           <img class="mb-5" src="/storage/posts_thumbnails/{{ $post->getThumbnailFileName() }}" alt="{{ $post->getTitleByLocale() }}">
           <h1>{{ $post->getTitleByLocale() }}</h1>
-          <p class="text-muted">
-            <i class="fa fa-clock me-2"></i>{{__('Posted at')}} {{ $post->getCreatedAt()->format('m/d/Y h:i A') }}
-            <i class="fa fa-flag ms-3 me-2"></i>{{__('Trending on')}} <strong>{{ $post->getCountry()->getNiceName() }}</strong>
-          </p>
+          <p class="text-muted"><i class="fa fa-clock me-2"></i>{{__('Posted at')}} {{ $post->getCreatedAt()->format('m/d/Y h:i A') }}</p>
+          <p class="text-muted"><i class="fa fa-flag me-2"></i>{{__('Trending on')}} <strong>{{ $post->getCountry()->getNiceName() }}</strong></p>
           <p>{!! $post->getContentByLocale() !!}</p>
         </section>
       </div>

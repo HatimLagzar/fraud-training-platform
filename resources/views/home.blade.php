@@ -74,7 +74,7 @@
 
         <p>{{ __('Protect yourself and your money from scammers on the internet by using our training to level up your knowledge of internet security and get our daily notifications about trending scams types and ways to protect against them.') }}</p>
 
-        <a href="#" class="btn btn-primary">{{ __('Train Now') }}</a>
+        <a href="{{ route('register-page') }}" class="btn btn-primary">{{ __('Train Now') }}</a>
       </div>
     </header>
 
