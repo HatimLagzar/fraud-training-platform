@@ -34,7 +34,7 @@ class ListPostsController extends Controller
 
             return redirect()
                 ->route('dashboard.home')
-                ->with('error', 'Error occurred, please retry later.');
+                ->with('error', 'Error occurred, please retry later!');
         }
     }
 }
