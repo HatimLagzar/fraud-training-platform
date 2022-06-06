@@ -16,13 +16,13 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login-page') }}">Login</a>
+                            <a class="nav-link" href="{{ route('login-page') }}">{{__('Login')}}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register-page') }}">Register</a>
+                            <a class="nav-link" href="{{ route('register-page') }}">{{__('Register')}}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Contact</a>
+                            <a class="nav-link" href="#">{{__('Contact')}}</a>
                         </li>
                         <x-flags-menu></x-flags-menu>
                     </ul>
@@ -50,7 +50,7 @@
                     </div>
                 </div>
                 <div class="input-group mb-2">
-                    <input type="email" placeholder="Email Address" class="form-control @error('email') is-invalid @enderror" name="email" required>
+                    <input type="email" placeholder="{{__('Email Address')}}" class="form-control @error('email') is-invalid @enderror" name="email" required>
                     <div class="invalid-feedback">
                         @error('email')
                         {{ $message }}
