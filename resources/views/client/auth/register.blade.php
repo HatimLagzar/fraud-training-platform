@@ -3,7 +3,7 @@
 @endphp
 @extends('layouts.noauth-template')
 @section('title')
-    Register
+{{__('Register')}}
 @endsection
 @section('content')
     <div id="register-page">
@@ -24,6 +24,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">Contact</a>
                         </li>
+                        <x-flags-menu></x-flags-menu>
                     </ul>
                 </div>
             </div>
@@ -37,11 +38,11 @@
                     </div>
                 </div>
             @endif
-            <h1 class="section-title">Please Register</h1>
+            <h1 class="section-title">{{__('Please Register')}}</h1>
             <form action="{{ route('register') }}" method="POST">
                 @csrf
                 <div class="input-group mb-2">
-                    <input type="text" placeholder="Full Name" class="form-control @error('name') is-invalid @enderror" name="name" required>
+                    <input type="text" placeholder="{{__('Full Name')}}" class="form-control @error('name') is-invalid @enderror" name="name" required>
                     <div class="invalid-feedback">
                         @error('name')
                         {{ $message }}
@@ -57,7 +58,7 @@
                     </div>
                 </div>
                 <div class="input-group mb-2">
-                    <input type="password" placeholder="Password" class="form-control @error('password') is-invalid @enderror" name="password" required>
+                    <input type="password" placeholder="{{__('Password')}}" class="form-control @error('password') is-invalid @enderror" name="password" required>
                     <div class="invalid-feedback">
                         @error('password')
                         {{ $message }}
@@ -65,7 +66,7 @@
                     </div>
                 </div>
                 <div class="input-group mb-2">
-                    <input type="password" placeholder="Password Confirmation" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" required>
+                    <input type="password" placeholder="{{__('Password Confirmation')}}" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" required>
                     <div class="invalid-feedback">
                         @error('password_confirmation')
                         {{ $message }}
@@ -74,7 +75,7 @@
                 </div>
                 <div class="input-group mb-3">
                     <select name="country" class="form-control @error('country') is-invalid @enderror" required>
-                        <option>Select Your Country</option>
+                        <option>{{__('Select Your Country')}}</option>
                         @foreach($countries as $country)
                             <option value="{{ $country->getId() }}">{{ $country->getNiceName() }}</option>
                         @endforeach
@@ -87,7 +88,7 @@
                     </div>
                 </div>
                 <div class="input-group">
-                    <button class="btn btn-primary">Register</button>
+                    <button class="btn btn-primary">{{__('Register')}}</button>
                 </div>
             </form>
         </section>
