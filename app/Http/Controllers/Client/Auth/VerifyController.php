@@ -35,11 +35,11 @@ class VerifyController extends Controller
             $this->verifyUserService->verify($user, $token);
 
             return redirect()
-                ->route('login-page')
-                ->with('success', 'Email Address verified successfully, please login.');
+                ->route('dashboard.quiz.ask')
+                ->with('success', 'Email Address verified successfully.');
         } catch (InvalidTokenException $e) {
             return redirect()
-                ->route('login-page')
+                ->route('verification.ask')
                 ->with('error', 'Invalid token!');
         } catch (Throwable $e) {
             Log::error('failed to verify email address', [
@@ -48,7 +48,7 @@ class VerifyController extends Controller
             ]);
 
             return redirect()
-                ->route('login-page')
+                ->route('verification.ask')
                 ->with('error', 'Error occurred, please retry later!');
         }
     }
