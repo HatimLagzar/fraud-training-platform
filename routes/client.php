@@ -14,6 +14,8 @@ use App\Http\Controllers\Client\Post\ListPostsController;
 use App\Http\Controllers\Client\Post\ShowPostController;
 use App\Http\Controllers\Client\Quiz\AskQuizController;
 use App\Http\Controllers\Client\Quiz\ReplyQuizController;
+use App\Http\Controllers\Client\Settings\ShowSettingsPageController;
+use App\Http\Controllers\Client\Settings\Subscription\RequestCancelSubscriptionController;
 use App\Http\Controllers\Client\Subscribe\PaySubscriptionController;
 use App\Http\Controllers\Client\Subscribe\ShowSubscriptionPageController;
 use App\Http\Controllers\Client\Subscribe\ShowSuccessPageController;
@@ -65,6 +67,9 @@ Route::prefix('{locale?}')
               ->middleware('auth')
               ->name('dashboard.')
               ->group(function () {
+                  Route::post('cancel-subscription', RequestCancelSubscriptionController::class)
+                       ->name('cancel-subscription');
+
                   Route::prefix('subscribe')->name('subscribe.')->group(function () {
                       Route::get('/', ShowSubscriptionPageController::class)->name('show');
                       Route::get('success', ShowSuccessPageController::class)->name('success');
@@ -86,6 +91,10 @@ Route::prefix('{locale?}')
                           Route::prefix('posts')->name('posts.')->group(function () {
                               Route::get('{id}', ShowPostController::class)->name('show');
                           });
+                      });
+
+                      Route::prefix('settings')->name('settings.')->group(function () {
+                          Route::get('/', ShowSettingsPageController::class)->name('index');
                       });
                   });
               });
