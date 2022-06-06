@@ -4,7 +4,7 @@
 
 @extends('layouts.auth-template')
 @section('title')
-  Dashboard
+  {{__('Dashboard')}}
 @endsection
 @section('content')
   <div class="container mt-5">

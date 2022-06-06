@@ -19,10 +19,10 @@
                             <a class="nav-link" href="{{ route('login-page') }}">{{__('Login')}}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register-page') }}">Register</a>
+                            <a class="nav-link" href="{{ route('register-page') }}">{{__('Register')}}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Contact</a>
+                            <a class="nav-link" href="#">{{__('Contact')}}</a>
                         </li>
                         <x-flags-menu></x-flags-menu>
                     </ul>

@@ -1,6 +1,6 @@
 @extends('layouts.noauth-template')
 @section('title')
-  Home
+  {{__('Home')}}
 @endsection
 @section('content')
   @if (session('success'))

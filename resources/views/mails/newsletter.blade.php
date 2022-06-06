@@ -3,7 +3,7 @@
 @endphp
 
 @component('mail::message')
-# Newsletter
+# {{__(Newsletter)}}
 
 @foreach($posts as $post)
   <div style="margin-bottom: 10px;">
@@ -12,6 +12,6 @@
   </div>
 @endforeach
 
-Thanks,<br>
+{{__('Thanks')}},<br>
 {{ config('app.name') }}
 @endcomponent

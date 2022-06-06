@@ -1,11 +1,11 @@
 @extends('layouts.auth-template')
 @section('title')
-  Subscription
+  {{__('Subscription')}}
 @endsection
 @section('content')
   <div id="subscribe-page">
     <div class="container mt-5">
-      <h1 class="mb-4 text-center">To continue your training, please fill out the form below</h1>
+      <h1 class="mb-4 text-center">{{__('To continue your training, please fill out the form below')}}</h1>
 
       <form action="{{ route('dashboard.subscribe.pay') }}"
             method="POST"
@@ -15,7 +15,7 @@
         @csrf
 
         <div class="input-group mb-2">
-          <input class="form-control w-100" type="text" name="card-holder-name" id="card-holder-name" placeholder="Card Holder Name">
+          <input class="form-control w-100" type="text" name="card-holder-name" id="card-holder-name" placeholder="{{__('Card Holder Name')}}">
         </div>
 
         <div id="card-element"></div>
@@ -23,7 +23,7 @@
 
         <button id="card-button"
                 class="btn btn-primary mt-3 d-block">
-          Subscribe Now with only USD $1
+          {{__('Subscribe Now with only USD $1')}}
         </button>
       </form>
     </div>
