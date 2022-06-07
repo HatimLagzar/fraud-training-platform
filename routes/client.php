@@ -20,6 +20,7 @@ use App\Http\Controllers\Client\Settings\Subscription\RequestCancelSubscriptionC
 use App\Http\Controllers\Client\Subscribe\PaySubscriptionController;
 use App\Http\Controllers\Client\Subscribe\ShowSubscriptionPageController;
 use App\Http\Controllers\Client\Subscribe\ShowSuccessPageController;
+use App\Http\Controllers\Client\TermsOfUse\ShowTermsOfUseController;
 use App\Http\Controllers\ResetPassword\EmailResetPasswordController;
 use App\Http\Controllers\ResetPassword\SetNewPasswordController;
 use App\Http\Controllers\ResetPassword\ShowResetPasswordController;
@@ -45,6 +46,8 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('{locale?}')->where(['locale' => 'en|fr|de|es|it'])
      ->middleware([SetupLocaleMiddleware::class, SetDefaultLocaleForUrlsMiddleware::class])
      ->group(function () {
+         Route::get('terms', ShowTermsOfUseController::class)->name('terms');
+
          Route::post('contact', ContactUsController::class)->name('contact');
 
          Route::get('/', HomeController::class)->name('home');

@@ -25,6 +25,8 @@
                 class="btn btn-primary mt-3 d-block">
           {{__('Subscribe Now with only USD $1')}}
         </button>
+
+        <p class="text-center mt-2 text-muted">{!! __('terms-and-conditions-notice') !!}</p>
       </form>
     </div>
   </div>
