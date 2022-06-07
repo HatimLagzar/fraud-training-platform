@@ -26,7 +26,7 @@
           {{__('Subscribe Now with only USD $1')}}
         </button>
 
-        <p class="text-center mt-2 text-muted">{!! __('terms-and-conditions-notice') !!}</p>
+        <p class="text-center mt-2 text-muted">{!! __('terms-and-conditions-notice', ['url' => route('terms', ['locale' => \Illuminate\Support\Facades\App::getLocale()])]) !!}</p>
       </form>
     </div>
   </div>
